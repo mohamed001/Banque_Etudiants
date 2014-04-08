@@ -1,0 +1,66 @@
+<?php 
+session_start();
+ if(isset($_SESSION['ADMIN']))
+header('Location: choix_gestion.html');   
+?>
+
+<!doctype html>
+<html id="fr-CA" lang="fr" data-kafe-tmpl="Content" data-kafe-page="SpecialContent">
+<head>
+	<meta charset="utf-8" />
+	<title>Gestion Bancaire ENSAO</title>
+	
+	<link rel="stylesheet" type="text/css"href="/BanqueTest/CSS/style1.css">
+	
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+  
+	
+	
+	
+</head>
+<body class="Content">
+
+	<div id="Header">
+		<div class="Fixed">
+			<div>
+				<a href="http://wwwensa.univ-oujda.ac.ma/">ENSAO</a> <span>|</span> <a href="http://webserver1.ump.ma/">UMP Oujda</a>
+			</div>
+		</div>
+	</div>
+	<div id="Content">
+
+<form  action="./cnx_admin.php" method="POST">
+<table>
+
+			<br>
+			<tr><td><p> <b>Login :</b></td>
+			<td><INPUT TYPE="text" NAME="log" SIZE="48"><br></td></tr>
+			<tr><td><b>Mot de passe : </b></td>
+			<td><INPUT TYPE="password" NAME="psswd" SIZE="48"><br></td></tr>
+			</table><br><br>
+			<INPUT TYPE="submit" NAME="connect" VALUE="Se connecter">
+			<!--<button type="submit" id="ok"><b>OK</b></button>-->
+			</p>
+		</form>
+</div>
+
+
+
+<div id="Footer">
+		<br class="Clearer"/>
+		<div class="region-footer">
+			<p class="copyright">&copy; BANQUE NATIONALE DE ENSAO et FINANCIÈRE BANQUE NATIONALE. Tous droits réservés 2013. Tous droits réservés 2013.Réalisé par : </br>
+			- MOULKAF IMAD </br>
+			- HAMIDA HALIM </br>
+			- LOUIZI HAMZA </br>
+			- ZOUGA MOHAMED</p>
+			</a>
+		</div>
+	</div>
+
+
+	
+</body>
+</html>

@@ -1,0 +1,210 @@
+<!doctype html>
+<html id="fr-CA" lang="fr" data-kafe-tmpl="Content" data-kafe-page="SpecialContent">
+<head>
+	<meta charset="utf-8" />
+	<title>Gestion Bancaire ENSAO</title>
+	
+	<link rel="stylesheet" type="text/css"href="/BanqueTest/CSS/style1.css">
+	
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+  <link rel="stylesheet" href="/resources/demos/style.css" />
+	
+	
+   
+	<script>
+  $(function() {
+    $( "#datepicker" ).datepicker();
+  });
+  </script>
+	<script type="text/javascript">
+		
+		// validation du formulaire ................................................
+			function valid_form(){
+				var nom = document.getElementById('nom').value;
+				var prenom = document.getElementById('prenom').value;
+				var pass = document.getElementById('pass').value;
+				var pass2 = document.getElementById('pass2').value;
+				var email = document.getElementById('email').value;
+				
+				if(nom.length==0 || prenom.length==0 ||pass.length==0 || pass2.length==0 || email.length==0  ){
+					alert("remplir tout les champs obligatoires");
+					return false;
+				}else return true;
+				
+			}
+		// validation du nom ........................................................
+			function valid_nom(){
+				var nom = document.getElementById('nom').value;
+				var parag1 = document.getElementById('parag1');
+				
+				if(nom.length<5 ){
+					
+					parag1.innerHTML="veuillez saisir au moins 5 caractères!";
+					parag1.style.color="red";
+					document.getElementById('nom').style.backgroundColor="red";
+				}
+				else{
+					parag1.innerHTML="nom Valid ! !";
+					parag1.style.color="green";
+					document.getElementById('nom').style.backgroundColor="white";
+				}
+				
+			}
+		// validation du prenom ........................................................
+			function valid_prenom(){
+				
+				var prenom = document.getElementById('prenom').value;
+				var parag2 = document.getElementById('parag2');
+				
+				if(prenom.length<5){
+					parag2.innerHTML="veuillez saisir au moins 5 caractères !";
+					parag2.style.color="red";
+					document.getElementById('prenom').style.backgroundColor="red";
+				}
+				else{
+					parag2.innerHTML="prénom Valid ! !";
+					parag2.style.color ="green";
+					document.getElementById('prenom').style.backgroundColor="white";
+				}
+			}
+		// validation d'email ........................................................
+			/*function valid_email() {
+				var email = document.getElementById('email').value;
+				var regex = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+				var parag3 = document.getElementById('email');
+				if(regex.test(email) == false) {
+					parag3.innerHTML="movais email !";
+					parag3.style.color="red";
+					document.getElementById('email').style.backgroundColor="red";
+					
+				}
+				else{
+					parag3.innerHTML="bon email !";
+					parag3.style.color="green";
+					document.getElementById('email').style.backgroundColor="white";
+				}
+			}
+		*/
+		//verification les champs identiques des pass
+		function valider_pass1(){
+			var pass1=document.form.pass.value;
+			var pass2=document.form.pass2.value;
+			
+			if(pass1!=pass2) {
+					pargofpass2.innerHTML="les mot de pase que vous avez saisi ne sont pas identiques  ";
+					pargofpass2.style.color="red";
+				}
+				else 
+				pargofpass2.innerHTML=""
+		
+		}
+		
+		//note sure mot de passe
+		function rmqpass()
+		{
+			rmq.innerHTML="au moins 6 caracteres contenant un chiffre et une lettre Majiscule et une lettre miniscule et sans espase !";
+		}
+		// verification le contenu du pass 
+		function valider_pass2(){
+
+			var pass1=document.form.pass.value;
+		var regex = /^(?=.*[a-z]+)(?=.*[A-Z]+)(?=.*[0-9]+)([^\\s]{6,})/;
+				if(regex.test(pass1) == false){
+				pargofpass.innerHTML="Mauvais mot de passe !";
+				pargofpass.style.color="red";
+				
+			}
+			else 
+			pargofpass.innerHTML="";
+			
+		}
+		
+		// liste deroulante naissance
+		function ajouteSup(){ 
+
+
+  document.forms.form.genre.options[0] = new Option((document.forms.form.genre.options[ Number(1) ].text ),(document.forms.form.genre.options[ Number(0) ].value) ); 
+
+}
+
+		
+		</script>
+	
+	
+</head>
+<body class="Content">
+
+	<div id="Header">
+		<div class="Fixed">
+			<div>
+				<a href="http://wwwensa.univ-oujda.ac.ma/">ENSAO</a> <span>|</span> <a href="http://webserver1.ump.ma/">UMP Oujda</a>
+			</div>
+		</div>
+	</div>
+	<div id="Content">
+
+<form  method="POST" action="Inscription.php" name="form" onsubmit="return valid_form();">
+			
+				<p>Nom :<p/>
+					*<input type="text" id="nom"  name="nom"onblur="valid_nom();"/>
+					<label id="parag1"></label>
+				<p>prénom :<p/>
+					*<input type="text" id="prenom" name="prenom" onblur="valid_prenom();"/>
+					<label id="parag2"></label>
+				<p>e_mail :<p/>
+					*<input type="email" id="email"  name="email"onblur="valid_email();"/>
+					<label id="parag3"></label><br/><br/>
+				<p> creer un mot de passe : </p>
+					*<input type="password" id="pass"  name="pass"onblur="valider_pass2();" onFocus="rmqpass();"/><br>
+					<label id="rmq" ></label>
+					<br>
+					<label id="pargofpass"></label>
+				<p> confirmer votre mot de passe : </p>
+					*<input type="password" id="pass2" onblur="valider_pass1();"/><br>
+					<label id="pargofpass2"></label>
+				<p> Sexe : </p>
+					<select  id="genre" name="genre"  alt="Je suis un/une...">
+					<label id="paragofgenre"></label>
+						
+						<option value="M">Homme</option>
+						<option value="F">Femme</option>
+					</select><br>
+					
+				<p> Date de naissance : </p>
+				 <input type="text" id="datepicker"  name="daten"/><br><br>
+				
+				
+				<p> Telephone :</p>
+					*<input type="text" name="tel" />
+				<p> Adresse :</p>
+					*<textarea  name="adr"> </textarea>
+					<br><br>
+				
+				<b>*:champs obligatoires</b><br><br><br>
+			
+			
+			<input type="submit" value="Valider" name="submit" /><br><br>
+			
+			</form>
+</div>
+
+
+
+<div id="Footer">
+		<br class="Clearer"/>
+		<div class="region-footer">
+			<p class="copyright">&copy; BANQUE NATIONALE DE ENSAO et FINANCIÈRE BANQUE NATIONALE. Tous droits réservés 2013. Tous droits réservés 2013.Réalisé par : </br>
+			- MOULKAF IMAD </br>
+			- HAMIDA HALIM </br>
+			- LOUIZI HAMZA </br>
+			- ZOUGA MOHAMED</p>
+			</a>
+		</div>
+	</div>
+
+
+	
+</body>
+</html>
